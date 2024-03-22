@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: voting-app-service
+  labels:
+    name: voting-app-service
+    app: demo-app
+    tier: frontend-80
+spec:
+  type: NodePort
+  selector:
+    name: voting-app-pod
+    app: demo-app
+    tier: frontend-80
+  ports:
+  - port: 80
+    targetPort: 80
+    nodePort: 30004
