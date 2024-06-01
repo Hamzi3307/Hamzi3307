@@ -8,9 +8,11 @@ It is exactly the same as a single entry in crontab (cron table)
 
 ## Examples:
 > Create a cron job
+
     - kubectl create cronjob my-job --image busybox:1.29 --schedule "* * * * *"
 
 > Create a cronJob with command
+
     - kubectl create cronjob my-job --image busybox:1.28 --schedule "* * * * *" -- date
 
 ## Manifest File
