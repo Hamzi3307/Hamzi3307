@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rc-nginx
+  labels:
+    app: rc-back
+    tier: rc_back
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-server
+      tier: frontend
+  template: 
+    metadata:
+      name: nginx-pod
+      labels: 
+        app: web-server
+        tier: frontend
+    spec:
+      containers:
+        - name: nginx-container
+          image:  nginx
+      restartPolicy: Never
+      resources:
+      
