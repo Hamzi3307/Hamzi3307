@@ -1,0 +1,31 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: myjob
+  namespace: test
+spec: 
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec: 
+          containers:
+            - name: my-cron-job
+              image:  busybox:1.28
+              env:
+                - name: DB_NAME
+                  valueFrom: 
+                    configMapRefKey:
+                      name: config-name
+                      key: db_name
+              command:
+                - /bin/sh
+                - -c
+                - cd /var/www/app; php artisan schedule:run
+              volumeMounts:
+              - name: config-vol
+                mountPath: "/config"
+        volumes:
+          - name:  config-vol
+            configMap: 
+              name:  config-name 
