@@ -13,6 +13,16 @@ In case we have created our cluster using imperative way, we can still get the c
     kubectl apply -f all-deploy-svc.yaml
 
 
+> NOTE: Mention the following params with the etcdctl command utility
+``` bash
+    ETCDCTL_API=3 etcd \
+    snapshot save snapshot.db \
+    --endpoints=https://127.0.0.1:2379
+    --cacert=/path/etc/etcd/ca.crt
+    --cert=/path/etc/etcd/etcd-server.crt
+    --key=/path/etc/etcd/etcd-server.key
+```
+
 ## ETCD Backup:
 ETCD is the main component where all the details of the cluster are stored.
 While creating an etcd server we pass a parameter where our whole data is stored.
