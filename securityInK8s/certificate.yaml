@@ -1,0 +1,11 @@
+apiVersion: certificates.k8s.io/v1
+kind: CertificateSigningRequest
+metadata: 
+  name: hamza
+spec:
+  groups:
+  - systems:authenticated
+  - systems:masters
+  signerName: kubernetes.io/kube-apiserver-client
+  request: <paste (cat hamza.csr | base64 -w 0)>
+  
