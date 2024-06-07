@@ -5,7 +5,12 @@ If we want two devices on same network communicate each other, we need the follo
 1. We need to create Network Interface on each of those devices.
 
         // Command to show the network interfaces
-         ip link 
+         ip link add vir-eth0 type veth
+         ip link add vir-bridge type bridge
+        // Used to change the state of an interface 
+         ip link set dev vir-bridge up
+        // to delete an interface
+         ip link del vir-bridge
 2. Attach IPs to the interface i.e eth0, using command:
     ip addr add 192.168.1.10/24 dev eth0
 
