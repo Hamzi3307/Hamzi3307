@@ -29,14 +29,14 @@ Docker utilizes linux capabilities as it does not gives all permissions to the r
 ```
 ![alt text](full-cap.png)
 
-# Security Context in K8s:
+## Security Context in K8s:
 
 ### Manage Capabilities:
 To manage linux capabilities and user running the pod or container we do these configuration
 
 ![alt text](security-k8s.png)
 
-### RunAsUser:
+### runAsUser:
 This is an alternative of this command:
 ```bash
     docker run -p 80:80 --user 1000 image_name
